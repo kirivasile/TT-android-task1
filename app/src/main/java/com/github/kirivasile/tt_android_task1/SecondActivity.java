@@ -15,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(llm);
-        RVAdapter adapter = new RVAdapter(CardData.initData());
+        RVAdapter adapter = new RVAdapter(100000);
         recyclerView.setAdapter(adapter);
     }
 }

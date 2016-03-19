@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 /**
  * Created by Kirill on 19.03.2016.
  */
@@ -28,10 +26,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
         }
     }
 
-    List<CardData> dataList;
+    private int mSize;
 
-    public RVAdapter(List<CardData> dataList) {
-        this.dataList = dataList;
+    public RVAdapter(int size) {
+        this.mSize = size;
     }
 
     @Override
@@ -43,9 +41,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
-        CardData elemData = dataList.get(position);
-        holder.imageView.setImageResource(elemData.photoId);
-        holder.textView.setText(elemData.cardText);
+        holder.imageView.setImageResource(R.drawable.wow_icon);
+        Converter converter = new Converter();
+        holder.textView.setText(converter.convert(position + 1));
         if (position % 2 != 0) {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#aaaaaa"));
         } else {
@@ -60,6 +58,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mSize;
     }
 }

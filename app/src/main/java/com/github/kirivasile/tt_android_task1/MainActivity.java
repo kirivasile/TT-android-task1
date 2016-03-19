@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AsyncSleep asyncSleep = new AsyncSleep(this);
+        asyncSleep.execute();
+
+        /* Maybe it will be a better example, but in task it was mandatory to use sleep()
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
@@ -26,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         };
-        handler.postDelayed(runnable, 2000);
+        handler.postDelayed(runnable, 2000); */
     }
 }

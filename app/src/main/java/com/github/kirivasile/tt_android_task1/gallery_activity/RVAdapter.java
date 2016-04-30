@@ -14,6 +14,7 @@ import com.github.kirivasile.tt_android_task1.detail_activity.DetailActivity;
 import com.github.kirivasile.tt_android_task1.models.Technology;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Kirill on 19.03.2016.
@@ -61,8 +62,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(mParentActivity.getApplicationContext(),
                         DetailActivity.class);
-                intent.putParcelableArrayListExtra(DATA_TAG, mData);
-                intent.putExtra(POSITION_TAG, position);
+                ArrayList<Technology> reversedData = mData;
+                Collections.reverse(reversedData);
+                intent.putParcelableArrayListExtra(DATA_TAG, reversedData);
+                intent.putExtra(POSITION_TAG, mData.size() - position - 1);
                 mParentActivity.startActivity(intent);
             }
         });
